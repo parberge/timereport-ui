@@ -25,12 +25,18 @@ class App extends Component {
          })
     });
     }
-    handleDateChange = (e, p) => {
-        console.log('it works, startDate: ' + p.startDate + ' endDate: ' + p.endDate)
+    handleDateChange = (e, p, moment) => {
+        var startDate = moment(p.startDate).format("L");
+        const _startDate = moment(startDate).format('YYYY-MM-DD');
+        var endDate = moment(p.endDate).format("L");
+        const _endDate = moment(endDate).format('YYYY-MM-DD');
+
+        console.log('it works, startDate: ' + _startDate + ' endDate: ' + _endDate)
     }
     render() {
         var { isLoaded, items} = this.state;
         var shortid = require('shortid');
+        var moment = require('moment');
         const marginStyle = { marginTop: '1rem' };
 
 
@@ -49,7 +55,7 @@ class App extends Component {
             <br></br>
             </div>
             <div className="col-sm-6 col-lg-6">
-                <DateRangePicker onApply={(e, p) => this.handleDateChange(e, p)}>
+                <DateRangePicker onApply={(e, p) => this.handleDateChange(e, p, moment)}>
                     <button type="button" className="btn btn-secondary">
                         <span className="oi oi-calendar"></span> &nbsp;&nbsp;Select Date
                 </button>
