@@ -8,6 +8,7 @@ const user_id = 'U2FGC795G';
 class App extends Component {
     state = {
         data: [],
+        names: [],
         error: undefined
     }
     
@@ -17,16 +18,21 @@ class App extends Component {
 
     fetchData = async (e) => {
        // e.preventDefault();
-        const api_call = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);  
-        const data = await api_call.json();
-        if (data) {       
+        const getUserId = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);
+        const getUserNames = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/names`);
+        const data = await getUserId.json();
+        const names = await getUserNames.json();
+
+        if (data && names) {
             this.setState({
                 data: data,
+                names: names,
                 error: '',
             });
         } else {
             this.setState({
                 data: undefined,
+                names: undefined,
                 error: 'Nothing Found in Database',
             })
         }
@@ -41,7 +47,7 @@ class App extends Component {
                     <form>
                         <div className='form-row'>
 
-                            <Form fetchData={this.state.fetchData}/>
+                            <Form names={this.state.names}/>
                             <DatePicker />
                         </div> 
                     </form>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import shortid from 'shortid';
 
 class TableBody extends Component {
   render() {

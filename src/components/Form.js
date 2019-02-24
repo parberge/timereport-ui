@@ -3,17 +3,17 @@ import React, { Component } from 'react'
 class Form extends Component {
     state = {
         selectedOption: undefined,
-        fetchData: undefined,
     }
+
     handleChange = (selectedOption) => {
         this.setState({ 
             selectedOption: selectedOption.target.value,
-            fetchData: this.props.fetchData,
         });
         console.log(`Option selected:`, selectedOption.target.value);
     }
 
   render() {
+    var shortid = require('shortid');
     const { selectedOption } = this.state;
     return (
         <div className="form-group">
@@ -22,11 +22,11 @@ class Form extends Component {
                 value={selectedOption}
                 onChange={this.handleChange}
                 placeholder="Select User">
-            <option value='kami'>kami</option>
-            <option value='pär'>pär</option>
-            <option value='tommy'>tommy</option>
-            <option value='stefan'>stefan</option>
-            <option value='anders'>anders</option>
+                {this.props.names.map(name => (
+                    <option key={shortid.generate()} value={name}>
+                        {name}
+                    </option>
+                ))};
         </select>
         </div>
     )
