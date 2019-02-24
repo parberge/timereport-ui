@@ -1,99 +1,55 @@
 import React, { Component } from "react";
-import DateRangePicker from 'react-bootstrap-daterangepicker';
-import shortid from 'shortid';
+import TableBody from './components/TableBody'
+import Form from './components/Form';
+import DatePicker from './components/DatePicker';
+
+const user_id = 'U2FGC795G';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            item: [],
-            isLoaded: false
+    state = {
+        data: [],
+        error: undefined
+    }
+    
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    fetchData = async (e) => {
+       // e.preventDefault();
+        const api_call = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);  
+        const data = await api_call.json();
+        if (data) {       
+            this.setState({
+                data: data,
+                error: '',
+            });
+        } else {
+            this.setState({
+                data: undefined,
+                error: 'Nothing Found in Database',
+            })
         }
     }
-
-    componentDidMount() {
-        this.getDataFromApi();
-    }
-
-    getDataFromApi = () => {
-        fetch("https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/U2FGC795G")
-        .then(response => response.json())
-        .then(data => {
-            this.setState({ 
-                items: data,
-                isLoaded:true,
-         })
-    });
-    }
-    handleDateChange = (e, p, moment) => {
-        var startDate = moment(p.startDate).format("L");
-        const _startDate = moment(startDate).format('YYYY-MM-DD');
-        var endDate = moment(p.endDate).format("L");
-        const _endDate = moment(endDate).format('YYYY-MM-DD');
-
-        console.log('it works, startDate: ' + _startDate + ' endDate: ' + _endDate)
-    }
     render() {
-        var { isLoaded, items} = this.state;
-        var shortid = require('shortid');
-        var moment = require('moment');
-        const marginStyle = { marginTop: '1rem' };
-
-
-
-    if (!isLoaded) {
-        return <div>...Loading...</div>;
-
-    }
-    else {
         return (
             <div className="App">
-            <div className="jumbotron">
-            <br></br>
-            </div>
-            <div className="col-sm-6 col-lg-1">
-            <br></br>
-            </div>
-            <div className="col-sm-6 col-lg-6">
-                <DateRangePicker onApply={(e, p) => this.handleDateChange(e, p, moment)}>
-                    <button type="button" className="btn btn-secondary">
-                        <span className="oi oi-calendar"></span> &nbsp;&nbsp;Select Date
-                </button>
-                </DateRangePicker>
-            </div>
-        <div className="col-sm-12 col-lg-12">
-    <br></br>
-          <table className="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">UserName</th>
-      <th scope="col">Id</th>
-      <th scope="col">Reason</th>
-      <th scope="col">Hours</th>
-      <th scope="col">Date</th>
+                <div className="jumbotron">
+                    <br></br>
+                </div>
+                <div className="col-sm-6 col-md-6 col-lg-6">
+                    <form>
+                        <div className='form-row'>
 
-    </tr>
-  </thead>
-  <tbody>
-      {items.map(item => (
-    <tr key={shortid.generate()}>
-      <th scope="row"></th>
-      <td>{item.user_name}</td>
-      <td>{item.user_id}</td>
-      <td>{item.reason}</td>
-      <td>{item.hours}</td>
-      <td>{item.event_date}</td>
-    </tr>
-      ))};
-  </tbody>
-</table>  
+                            <Form fetchData={this.state.fetchData}/>
+                            <DatePicker />
+                        </div> 
+                    </form>
+                </div>      
+                    <TableBody data={this.state.data}/>
             </div>
-         </div>
         );
     }
-    }
 }
-
 
 export default App;
