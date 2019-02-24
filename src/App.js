@@ -3,7 +3,7 @@ import TableBody from './components/TableBody'
 import Form from './components/Form';
 import DatePicker from './components/DatePicker';
 
-const user_id = 'U2FGC795G';
+//const user_id = 'U2FGC795G';
 
 
 class App extends Component {
@@ -17,17 +17,26 @@ class App extends Component {
         names: [],
         error: undefined,
         selectedOption: undefined,
+        selectedUserName: undefined,
+        selectedUserId: undefined,
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchNames();
     }
 
     handleSelectChange = (selectedOption) => {
+        var selectedUserName = selectedOption.target.value.split(',')[0];
+        var selectedUserId = selectedOption.target.value.split(',')[1];
+
         this.setState({
             selectedOption: selectedOption.target.value,
+            selectedUserName: selectedUserName,
+            SelectedUserId: selectedUserId,
         });
-        console.log(`Option selected:`, selectedOption.target.value);
+        console.log('userName is : ' + selectedUserName);
+        console.log('Id is : ' + selectedUserId);
+        this.fetchData(selectedUserId);
     }
 
     handleDateChange = (e, p) => {
@@ -42,24 +51,40 @@ class App extends Component {
         console.log('it works, startDate: ' + startDate + ' endDate: ' + endDate)
     }
 
-    fetchData = async (e) => {
-        const getUserId = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);
+    fetchNames = async (e) => {
         const getUserNames = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/names`);
-        const data = await getUserId.json();
         const names = await getUserNames.json();
-
-        if (data && names) {
+        if (names) {
             this.setState({
-                data: data,
                 names: names,
                 error: ''
             });
         } else {
             this.setState({
-                data: undefined,
                 names: undefined,
                 error: 'Nothing Found in Database'
             })
+            console.log(this.state.error);
+        }
+    }
+
+    fetchData = async (e) => {
+        const user_id = e;
+        console.log('fetchData user_id is ' + user_id)
+        const getUserId = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);
+        const data = await getUserId.json();
+
+        if (data) {
+            this.setState({
+                data: data,
+                error: ''
+            });
+        } else {
+            this.setState({
+                data: undefined,
+                error: 'Nothing Found in Database'
+            })
+            console.log(this.state.error);
         }
     }
     render() {

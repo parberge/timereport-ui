@@ -12,9 +12,9 @@ class Form extends Component {
                 value={this.props.selectedOption}
                 onChange={this.props.handleSelectChange}
                 placeholder="Select User">
-                {this.props.names.map(name => (
+                {Object.entries(this.props.names).map(name => (
                     <option key={shortid.generate()} value={name}>
-                        {name}
+                        {name[0]}
                     </option>
                 ))};
         </select>
