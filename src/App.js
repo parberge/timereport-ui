@@ -32,11 +32,10 @@ class App extends Component {
         this.setState({
             selectedOption: selectedOption.target.value,
             selectedUserName: selectedUserName,
-            SelectedUserId: selectedUserId,
+            selectedUserId: selectedUserId,
         });
         console.log('userName is : ' + selectedUserName);
         console.log('Id is : ' + selectedUserId);
-        this.fetchData(selectedUserId);
     }
 
     handleDateChange = (e, p) => {
@@ -47,8 +46,9 @@ class App extends Component {
             startDate: startDate,
             endDate: endDate
         })
-
+        console.log('selected userid is ' + this.state.selectedUserId)
         console.log('it works, startDate: ' + startDate + ' endDate: ' + endDate)
+        this.fetchData(this.state.selectedUserId, startDate, endDate)
     }
 
     fetchNames = async (e) => {
@@ -68,10 +68,9 @@ class App extends Component {
         }
     }
 
-    fetchData = async (e) => {
-        const user_id = e;
-        console.log('fetchData user_id is ' + user_id)
-        const getUserId = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${user_id}`);
+    fetchData = async (selectedUserId, startDate, endDate) => {
+        console.log('fetchData user_id is ' + selectedUserId)
+        const getUserId = await fetch(`https://ywdi37qne9.execute-api.eu-north-1.amazonaws.com/api/user/${selectedUserId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`);
         const data = await getUserId.json();
 
         if (data) {
