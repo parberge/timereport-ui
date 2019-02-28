@@ -14,6 +14,7 @@ notifications:
 before_install:
 - openssl aes-256-cbc -K $encrypted_5ae27258bb12_key -iv $encrypted_5ae27258bb12_iv
   -in secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
 - pip install -U pip
 - pip install awscli
 stages:
