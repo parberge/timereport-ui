@@ -21,11 +21,11 @@ jobs:
     script:
     - npm install
     - npm run build
-    - aws s3 sync build/ s3://dev.timereport.codelabs.se
+    - aws s3 sync build/ s3://dev.timereport.codelabs.se --acl public-read
   - stage: Prod
     on:
       branch: master
     script:
     - npm install
     - npm run build
-    - aws s3 sync build/ s3://timereport.codelabs.se
+    - aws s3 sync build/ s3://timereport.codelabs.se --acl --public-read

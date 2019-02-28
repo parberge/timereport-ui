@@ -50,7 +50,7 @@ class Timereport extends Component {
       }
   
       fetchNames = async (e) => {
-          const getUserNames = await fetch(`${this.props.backend_url}'/user/names'`);
+          const getUserNames = await fetch(`${this.props.backend_url}/user/names`);
           const names = await getUserNames.json();
           if (names) {
               this.setState({
