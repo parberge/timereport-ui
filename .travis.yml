@@ -2,22 +2,20 @@ language: python
 python:
 - '3.6'
 cache: pip
-
 node_js: 6
-
 env:
   global:
   - AWS_DEFAULT_REGION: us-east-1
-  - secure: MSx0UbNHbyPGa/LeG1QpZoRUWRcygxZyxkXt0pbDdoRlpHUj5ww8Fa5tE8oAcQrgqREVYE6cboF8D4npnm5G0NAj4QkFPBOPqgNzF5swXC96b5NaPhw1/7IRBOJrdzmpbvvX0z3fYK2PzDCIf9jKzC7iTwPDNqJHWlZqlqpdLFLPPwQGYOMslibNmpZQskM10gQ/OS8y4UaWbNsk7pou0p7fQL9hd2uQSwBQW1ss9fWyXuCWXkZ1rsxsXBubonh6uYUw9ppclGZt8OFFUQ4H5TldYN27cT5xun83tnILh4vDpk1sqEjP2GyiwxH3z/z+ivrVqmSLaaxlCZei02yYmHOH+Ig2pIUgvRHUGAoz0XtBAdXcze2pRbs6UloJMjzdzMmy85ufhBKBpdRrS8FTwCx6DpCCzhGW9nYh92lcs8WgX/AQU6PW68CvPrFbwUoMEnjsIyELQS+8If8ueMkQ5U4SwDZYSGqlkfd068El3c043qf4l1/x9zxKsxZ8VAbPLFTP9JFpKEl5VZAuVNR0EVHSwmrP3Vk7fFyHXL0VfS/t8uofcYhw+JaXq7o6iu0lbgPVsH1+OPC5/wcU+Kx18BGB5F/QyPOBR0sp8mft9ZHPJTlUdTsn6EQw/hBJlUPnfVK7dySsVNdPjFKgII8xJMlhdlZXGywrSYGLO0dHyII=
-  - secure: Sx2e8LCOwPhNp+0rhw1FXYL9zjWJSg7ImYE9V1atR69hl8OIDM0c9IaoFWZpmBBsKubo40lD/xcKIsUABmQs0ePMkLOk/pytCXamJEABWt9RfD3tUCk8TG3UD0Sr6TSBhf0QN1i/LncZ2WbtTRJjob66qFEB1XGGCXpG1CGLyJR9Qir3SijFuK8vSceotkKlaec9JES4V5W02xq7ckeKfbUk2cCKTKddbHM3JCp1NbiuaHyfhaiI73rff1loy4gB2y2BOMDnkJRXIRrg4OJzE50CrLBcUI8w+HcxujZGNeu4PM/C4daQVZkKvGfIPvX5M6DWj2vgO+VJBYCuenvEeglHXaVSrsyBmn4fngzruYIj0kThtN7SgtpDETSBzED9M1FOxh8+MEOowsJCdSVbqU6cGK7HiyizYCXHfvxRefmweOc0PwBpF7wMi5aKWKy4lnxJBE0tJaVhxRqKwZ6C5L67vqdSJDouYODxx7xt1d7ZppDzxGTovZzsTDOBvQ/w+uwkxy1F72bHkquj/8Gia5KUgekpqG0wOz6zT56OfFBVVKGBUN2viM1lfy2Ai7xAy5BTCMySH7J35Umhy3HNBuSkS0Vo+CtQRGOgiGWD4mF/kPz2D94hd+o9ZOriP35C3TkG3IH659kPov4nghKROtvh7bTSVWkK4QCI0udQQZU=
+  - secure: WT32ZRymO47CKaHDWhrBqv3eBFWPJnNpxxl8Yv7vdyaQCRzP5PIAoLrfyx/BY7ODLvvF2SjK12ncVlljYlt9tx7sjvom//EKu5kIyic3o8gn82E2rsK23cEek3RR3BvRvydkldZWW/9l81X8sXxvAL4LN4Dp0NpS3shFPQqf3SskXe4aij4SjI65MBaBZc+gIOSiJLmgv+I780h/HWFLyG4yo2gTOiYN3kBoIWoyiJq/7AWJz0jlKWAujHgNB0SOrAcuTZ2C7hr2xQwoYhm3CEeVxv42KJP+qmD+Xkfa7QW+OkRwLJA9JKEDtf28Y9Bm6rKbBSvqSjYtIDMvT7j8S/DV04icauBkmzRZbDfSpWQcB0LYqOhhDekj6DC9lEm+kUCZ4G5s/0jhhEsDxUZ6vl0xTholdd6HmRuSFK0OiSregLBNSwj+diM3oy3+HgaEy0lKDLLzc8klqPZnEdoiCOjbIPo4+6kjUSbOnsH+qVPGet88/tYci0Itk7Qewsmd4Enu3DYLS9NBFGU9+2TULvPDA8XZZP5i19DYRSB03jDdCVnoQS8uKs3sLBaB1RBMM9EXieaacKK6KfmePfOhuZcQxRyflZcElSH3kGdG8pfstbLfjG0NW1Z8EVL1o6fkZUNbrqBBaAw9T1sjZM7mfpdSACUbJdaz1wIXjnvgylI=
+  - secure: Ty6Z+aKOr/E8FDvw7ckobGkUsIf6Rl9OnC90u6ImBqCEeQYWoRIgLoqeSfq9sXJGqSzd6VreLLaVc3hZJEEWBCcLIcq0j+MpeOm+rL4hfN8Tht2mjSriMvbeQqgk280u4Gfk0UiW6SUxYtu/L5vQTdfMQ5Qgm6ssdT5oK5ZNiIAI7MPBHW2fDZ8NW3rJgf9xH3FCCEE4TsBcAS9s82ev92uliRePcA06WKa9ERB2jxNJNlX7ey40+6x4ZMnW3nL2yWDqHewFSddZGMKaocsK1lGSwmf8Hyskyjqj5hgUROxaTFQHnF5KjDHipuJnzmAVEkXfQA28rs0GAeAxTNsdGqUyqq0ElXjVNH/86HJed4Sk/lNKxQmyVbotfMLLU2pfK69fyRQM1ZoS+p34WTF0fgANflUmWchch5xlnZ962vEApSTbYTL6sbD/Fajd+dKRpCV0W42OzQZWg1EXjJeFG857wlhPRjd6N1p/ga/a+Ci9KwGHrysBA6tqGvG/HNnAvj7k9nhqQBvW5rcohs+xaWNsiFjqg9RVCyotB9+EvkUhiEkbuvp2mF2xTJ86/j9aDkK1dSoGT1+DrTF87S8CxnyZWBmK90zhk+D5MUd7P/6Fyk4/L3MFNkk0yRBa+2yU9gn929wClrD2a0H+TzoKk89D3lchjlgS0fsvMLDGIx0=
 notifications:
   slack:
     secure: HJHvn6wKNCIr3skGWx2HK8gz9KIdg8Yd73gBoUTyUgz39v16WkISHOVsSDDTg4RunX/nggO5XBwjc9HwZeiX2V4OjzAukOaufk/OOvz2Hl4vhkUIJWgho3KFJAcm+dOi3wwJHGFBtLW3yvprEnjIf6MQoQqsnXK21nzihgvO1kBS8UYagJvtFf0Tqhz3Biz1lcEJi5cTpkfaG9fCBit4qzQig5jZeBiVb2/aKiQYDhAvc6O9VijJj8TCCPWhPpQGAOUR+yjKZQGnSTmSEU1iJbvEngpmliARP3vAUS28Ahrw84C0LchdgBA3E1LcKxjZokRfaxKAHMEWg69ovufrwLoo6Eb6vLQR3qhvDrwrPV3zG7kgiiRStxtz2mjeAljcLqoKQ0BrUNxEEF4bHyVVAc5zpIalIWD/YzUw+WOrMcAA+Oti4XAbuD7tSoZrkqCutBmxonHLjITatGMzndKBMhHIJu5v7y77ibX1ZyRixBqZ/B9v+0HOEn61nZErlpy0L+TMRX/bWPyOFMqAQO6gz1mnEwwSeU/HBs020/yGrcAWCjU8bCukOJ8ax4fIpOSPgU3tKc5759I3YOE3s+QM4TWZ97CHk54c9t2nvW6sE0mZdjSIjVMW/5Rq4a9CIJaYnvgKjGgzq+rqlSugOxZL95gqBwQLqt3iHmpjNB54pto=
 before_install:
-- pip install -U pip
-- pip install awscli
 - openssl aes-256-cbc -K $encrypted_5ae27258bb12_key -iv $encrypted_5ae27258bb12_iv
   -in secrets.tar.enc -out secrets.tar -d
+- pip install -U pip
+- pip install awscli
 stages:
 - name: Dev
   if: type = pull_request
@@ -28,12 +26,12 @@ jobs:
   - stage: Dev
     script:
     - npm install
-    - npm run build
+    - npm run build:dev
     - aws s3 sync build/ s3://dev.timereport.codelabs.se --acl public-read
   - stage: Prod
     on:
       branch: master
     script:
     - npm install
-    - npm run build
+    - npm run build:prod
     - aws s3 sync build/ s3://timereport.codelabs.se --acl --public-read
