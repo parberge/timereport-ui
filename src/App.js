@@ -5,7 +5,6 @@ import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Timereport from './components/Timereport';
 import { Container } from 'semantic-ui-react';
-import dotenv from 'dotenv';
 
 require('dotenv').config();
 
@@ -16,7 +15,8 @@ function onAuthRequired({history}) {
 class App extends Component {
     
     render() {
-        console.log(process.env.REACT_APP_okta_baseurl);
+        console.log('app.js base url is ' + process.env.REACT_APP_okta_baseurl);
+        console.log('app.js backend_url is ' + process.env.REACT_APP_backend_url)
 
         return (
             <div>
@@ -30,7 +30,7 @@ class App extends Component {
                         <NavBar/>
                         <Container text style={{ marginTop: '7em' }}>   
                             <Route path="/" exact={true} render={() => <Login baseUrl={process.env.REACT_APP_okta_baseurl} />} />
-                            <SecureRoute path="/timereport" component={Timereport} backend_url={process.env.REACT_APP_backend_url}/>
+                            <SecureRoute path="/timereport" render={() => <Timereport backend_url={process.env.REACT_APP_backend_url} />} />
                             <Route path="/implicit/callback" component={ImplicitCallback} />
                         </Container>
                     </Security>

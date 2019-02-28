@@ -20,6 +20,7 @@ class Timereport extends Component {
       }
   
       componentDidMount() {
+          console.log('backend url is: ' + this.props.backend_url)
           this.fetchNames();
       }
   
@@ -50,8 +51,7 @@ class Timereport extends Component {
       }
   
       fetchNames = async (e) => {
-          const backend_url = this.props.backend_url;
-          const getUserNames = await fetch(`${backend_url}/user/names`);
+          const getUserNames = await fetch(`${this.props.backend_url}/user/names`);
           const names = await getUserNames.json();
           if (names) {
               this.setState({
@@ -68,9 +68,8 @@ class Timereport extends Component {
       }
   
       fetchData = async (selectedUserId, startDate, endDate) => {
-          const backend_url = this.props.backend_url;
           console.log('fetchData user_id is ' + selectedUserId)
-          const getUserId = await fetch(`${backend_url}/${selectedUserId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`);
+          const getUserId = await fetch(`${this.props.backend_url}/user/${selectedUserId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`);
           const data = await getUserId.json();
   
           if (data) {
@@ -87,6 +86,7 @@ class Timereport extends Component {
           }
       }
   render() {
+      console.log('timereport.js backend url is: ' + this.props.backend_url)
     return (
         <div className="col-sm-12 col-md-12 col-lg-12">
         <form>
@@ -96,7 +96,10 @@ class Timereport extends Component {
                 selectedOption={this.state.selectedOption}
                 handleSelectChange={this.handleSelectChange}
                 />
-                <DatePicker handleDateChange={this.handleDateChange}/>
+                <DatePicker 
+                handleDateChange={this.handleDateChange}
+                backend_url={this.props.backend_url}
+                />
             </div> 
         </form>
         <TableBody data={this.state.data}/>
