@@ -50,7 +50,8 @@ class Timereport extends Component {
       }
   
       fetchNames = async (e) => {
-          const getUserNames = await fetch(`${this.props.backend_url}/user/names`);
+          const backend_url = this.props.backend_url;
+          const getUserNames = await fetch(`${backend_url}/user/names`);
           const names = await getUserNames.json();
           if (names) {
               this.setState({
@@ -67,8 +68,9 @@ class Timereport extends Component {
       }
   
       fetchData = async (selectedUserId, startDate, endDate) => {
+          const backend_url = this.props.backend_url;
           console.log('fetchData user_id is ' + selectedUserId)
-          const getUserId = await fetch(`${this.props.backend_url}/${selectedUserId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`);
+          const getUserId = await fetch(`${backend_url}/${selectedUserId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`);
           const data = await getUserId.json();
   
           if (data) {
