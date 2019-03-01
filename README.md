@@ -20,9 +20,9 @@ serve -s build/ -l 3000
 ```
 ### Packaing .env secrets for travis-ci
 ```
-$ tar cvf secrets.tar .env.* 
+$ tar cvf secrets.tar .env* 
+a .env
 a .env.dev
-a .env.local
 a .env.prod
 
 $ travis encrypt-file secrets.tar --add
